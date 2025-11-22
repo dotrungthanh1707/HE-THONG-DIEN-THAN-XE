@@ -126,7 +126,10 @@
           <div class="hero-split row no-gutters align-items-center mb-3">
             <div class="col-lg-12 pr-lg-3 hero-text text-left text-lg-left text-center">
               <h1 class="content-title hero-title text-danger font-weight-bold mb-2">
-                MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE TOYOTA CAMRY 2006
+                MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE 
+              </h1>
+              <h1 class="content-title hero-title text-danger font-weight-bold mb-2">
+                TOYOTA CAMRY 2006
               </h1>
               <!-- <p class="hero-sub lead mb-0">
                 Bài giảng điện tử – mô phỏng trực quan các hệ thống: chiếu sáng, tín hiệu,
@@ -430,41 +433,41 @@ function absolutizeAttr(root, selector, attr, baseAbs) {
     obs.observe(document.getElementById('main-content'), { childList: true, subtree: false });
   })();
 
-  /* ===== Hero Slider – JS ===== */
-  (function initCamrySlider(){
-    const root = document.getElementById('camry-slider');
-    if (!root) return;
+  // /* ===== Hero Slider – JS ===== */
+  // (function initCamrySlider(){
+  //   const root = document.getElementById('camry-slider');
+  //   if (!root) return;
 
-    const slides = Array.from(root.querySelectorAll('.slide'));
-    const dots   = Array.from(root.querySelectorAll('.dot'));
-    const prevBtn = root.querySelector('.nav.prev');
-    const nextBtn = root.querySelector('.nav.next');
+  //   const slides = Array.from(root.querySelectorAll('.slide'));
+  //   const dots   = Array.from(root.querySelectorAll('.dot'));
+  //   const prevBtn = root.querySelector('.nav.prev');
+  //   const nextBtn = root.querySelector('.nav.next');
 
-    let i = 0;
-    let timer = null;
-    const AUTOPLAY_MS = 1600;
+  //   let i = 0;
+  //   let timer = null;
+  //   const AUTOPLAY_MS = 1600;
 
-    function show(n){
-      i = (n + slides.length) % slides.length;
-      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
-      dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-    }
-    function next(){ show(i + 1); }
-    function prev(){ show(i - 1); }
+  //   function show(n){
+  //     i = (n + slides.length) % slides.length;
+  //     slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+  //     dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  //   }
+  //   function next(){ show(i + 1); }
+  //   function prev(){ show(i - 1); }
 
-    function play(){ stop(); timer = setInterval(next, AUTOPLAY_MS); }
-    function stop(){ if (timer) clearInterval(timer); timer = null; }
+  //   function play(){ stop(); timer = setInterval(next, AUTOPLAY_MS); }
+  //   function stop(){ if (timer) clearInterval(timer); timer = null; }
 
-    nextBtn.addEventListener('click', () => { next(); play(); });
-    prevBtn.addEventListener('click', () => { prev(); play(); });
-    dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.index); play(); }));
+  //   nextBtn.addEventListener('click', () => { next(); play(); });
+  //   prevBtn.addEventListener('click', () => { prev(); play(); });
+  //   dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.index); play(); }));
 
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', play);
+  //   root.addEventListener('mouseenter', stop);
+  //   root.addEventListener('mouseleave', play);
 
-    show(0);
-    play();
-  })();
+  //   show(0);
+  //   play();
+  // })();
   </script>
 </body>
 </html>
