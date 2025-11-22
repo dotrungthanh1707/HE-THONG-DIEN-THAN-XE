@@ -1,0 +1,151 @@
+<section style="padding: 20px;">
+  <h2 class="text-center mb-4">HU & HF</h2>
+
+  <table class="pan-table" border="1" cellspacing="0" cellpadding="8">
+    <!-- BƯỚC 1 -->
+    <tr>
+      <th>BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
+      <td>
+        <ul>
+          <li>1. MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE</li>
+          <li>2. ĐỒNG HỒ VOM</li>
+          <li>3. PHẦN MỀM TRA CỨU SƠ ĐỒ MẠCH ĐIỆN</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 2 -->
+    <tr>
+      <th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
+      <td>
+        <ul>
+          <li>TAIL: Đèn Tail hoạt động bình thường.</li>
+          <li>HEAD-LOW: Hoạt động bình thường.</li>
+          <li>HEAD-HIGH: Không hoạt động.</li>
+          <li>FLASH: Hoạt động bình thường.</li>
+          <li>AUTO: Hoạt động bình thường.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 3 -->
+    <tr>
+      <th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
+      <td>
+        <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
+          <div style="flex: 1 1 260px;">
+            <ul>
+              <li>1. Đứt dây tại chân HU của hộp BCM với HU của công tắc Dimmer SW.</li>
+              <li>2. Đứt tiếp điểm High trong công tắc Dimmer SW.</li>
+            </ul>
+          </div>
+          <div style="flex: 1 1 260px; text-align: center;">
+            <img src="img/Pan/HU.png" alt="Sơ đồ HU HF" style="max-width: 100%; border-radius: 10px; border: 1px solid #ccc;">
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 4 -->
+    <tr>
+      <th>BƯỚC 4: ĐO KIỂM</th>
+      <td>
+        <h5>* Khóa điện bật ON & công tắc Dimmer SW ở chế độ HEAD</h5>
+        <table class="inner-table" style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr>
+              <th>Khu vực nghi ngờ</th>
+              <th style="width: 40%;">Vị trí đo</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HU (BCM)</td>
+              <td>HU(BCM) & Mass E2	</td>
+              <td>Nếu giá trị điện áp tại điểm HU(BCM) & mass E2 là 12v=> vẫn còn hoạt động bình thường</td>
+            </tr>
+            <tr>
+              <td>HU Dimmer SW</td>
+              <td>HU & EL	</td>
+              <td>Có giá trị điện trở hki bật công tắc=> hoạt động bình thường</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 5 -->
+    <tr>
+      <th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th>
+      <td>
+        <ul>
+          <li>Điện áp tại chân HU (BCM) là 12V thì đứt dây nối từ chân IG5 đến chân HU công tắc Dimmer SW.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 6 -->
+    <tr>
+      <th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th>
+      <td>
+        <ul>
+          <li>Ta tiến hành nối dây từ chân IG5 đến chân HU công tắc Dimmer SW.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <style>
+    .pan-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #007bff;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      font-size: larger;
+    }
+
+    .pan-table th {
+      width: 30%;
+      background-color: #f1f7ff;
+      color: #0d47a1;
+      text-transform: uppercase;
+      font-weight: bold;
+      border: 1px solid #007bff;
+      vertical-align: top;
+      padding: 10px 12px;
+    }
+
+    .pan-table td {
+      border: 1px solid #007bff;
+      padding: 10px 14px;
+      vertical-align: top;
+    }
+
+    .pan-table ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .pan-table tr:hover {
+      background-color: #f9fbff;
+      transition: 0.3s;
+    }
+
+    .inner-table th,
+    .inner-table td {
+      border: 1px solid #007bff;
+      text-align: center;
+      padding: 6px;
+    }
+
+    .inner-table th {
+      background-color: #e8f1ff;
+    }
+
+    img {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</section>

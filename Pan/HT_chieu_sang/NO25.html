@@ -1,0 +1,165 @@
+<section id="tail-section" style="padding:20px;">
+  <h2 class="text-center mb-4">NO25</h2>
+
+  <table class="pan-table" cellspacing="0" cellpadding="0">
+    <!-- BƯỚC 1 -->
+    <tr>
+      <th>BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
+      <td>
+        <ul>
+          <li>1. MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE</li>
+          <li>2. ĐỒNG HỒ VOM</li>
+          <li>3. PHẦN MỀM TRA CỨU SƠ ĐỒ MẠCH ĐIỆN</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 2 -->
+    <tr>
+      <th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
+      <td>
+        <ul>
+          <li>TAIL: Hoạt động bình thường.</li>
+          <li>HEAD-LOW: Hoạt động bình thường.</li>
+          <li>HEAD-HIGH: Đèn Pha không sáng.</li>
+          <li>FLASH: Đèn Pha không sáng.</li>
+          <li>AUTO: Hoạt động bình thường.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 3 -->
+    <tr>
+      <th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
+      <td>
+        <div class="row-in">
+          <div class="col-in">
+            <ul>
+              <li>1. Đứt dây nối từ chân 2 HEAD RELAY NO.2 đến chân DIM (BCM).</li>
+              <li>2. Hỏng cuộn dây của HEAD RELAY NO.2.</li>
+              <li>3. Đứt dây nối từ chân 5 của HEAD RELAY NO.2 đến đèn Head.</li>
+            </ul>
+          </div>
+          <figure class="col-in fig">
+            <img src="img/Pan/NO.02.png" alt="Sơ đồ HEAD RELAY NO.2">
+            <figcaption>Sơ đồ khu vực nghi ngờ</figcaption>
+          </figure>
+        </div>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 4 -->
+    <tr>
+      <th>BƯỚC 4: ĐO KIỂM</th>
+      <td>
+        <h5 class="mt0">* Khóa điện bật ON và công tắc bật ở vị trí HEAD</h5>
+        <table class="inner-table">
+          <thead>
+            <tr>
+              <th>Khu vực nghi ngờ</th>
+              <th style="width:40%;">Vị trí đo</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DIM (BCM)</td>
+              <td>
+                <ul class="compact">
+                  <li>ID9 & Mass =12V</li>
+                  <li>ID9 & Mass =0V</li>
+                </ul>
+              </td>
+              <td>Nếu giá trị điện áp tại điểm 1A & mass là 12v -> vẫn còn nguồn vào</td>
+            </tr>
+            <tr>
+              <td>Relay NO.02	</td>
+              <td>Chân 2 relay & mass A1 =12v	</td>
+              <td>Giá trị điện áp 0V relay đứt</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 5 -->
+    <tr>
+      <th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th>
+      <td>
+        <ul>
+          <li>Điện áp tại đèn Head bằng 0V thì đứt dây nối từ chân 5 của HEAD RELAY NO.2 đến đèn Head.
+</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 6 -->
+    <tr>
+      <th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th>
+      <td>
+        <ul>
+          <li>Nối dây từ chân 5 của HEAD RELAY NO.2 đến đèn Head
+</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <style>
+    /* Bảng chính (Bước | Nội dung) */
+    .pan-table{
+      width:100%;
+      border-collapse:collapse;
+      background:#fff;
+      border:2px solid #0d6efd;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+      font-size: larger;
+    }
+    .pan-table th,
+    .pan-table td{ border:1px solid #0d6efd; vertical-align:top; }
+    .pan-table th{
+      width:28%;
+      background:#eef6ff;
+      color:#0b2c6b;
+      font-weight:700;
+      text-transform:uppercase;
+      padding:12px 14px;
+    }
+    .pan-table td{ padding:12px 14px; }
+    .pan-table tr:hover{ background:#f9fbff; }
+
+    /* Layout 2 cột trong ô nội dung (bên trái list, bên phải ảnh) */
+    .row-in{ display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap; }
+    .row-in .col-in{ flex:1 1 260px; }
+    .row-in .fig{ text-align:center; }
+    .row-in img{
+      max-width:100%;
+      border-radius:10px;
+      border:1px solid #d9e2ef;
+      box-shadow:0 4px 10px rgba(0,0,0,.06);
+    }
+    .row-in figcaption{ font-size:14px; color:#556; margin-top:6px; }
+
+    /* Bảng đo kiểm lồng trong bước 4 */
+    .inner-table{ width:100%; border-collapse:collapse; }
+    .inner-table th, .inner-table td{
+      border:1px solid #0d6efd;
+      text-align:center;
+      padding:8px;
+    }
+    .inner-table thead th{ background:#e8f1ff; }
+
+    /* Nhỏ gọn danh sách trong ô bảng đo */
+    .compact{ margin:0; padding-left:18px; text-align:left; }
+
+    .mt0{ margin-top:0; }
+
+    /* Hover hàng bảng trong bước 4 */
+    .inner-table tbody tr:hover{ background:#f0f8ff; transition:.2s; }
+
+    /* Responsive */
+    @media (max-width: 768px){
+      .pan-table th{ width:36%; }
+    }
+  </style>
+</section>

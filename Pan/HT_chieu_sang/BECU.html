@@ -1,0 +1,142 @@
+<section id="pancs" style="padding: 20px;">
+  <h2 class="text-center mb-4">BECU / 10A ECU B NO.1</h2>
+
+  <table class="pancs-table" border="1" cellspacing="0" cellpadding="8">
+    <!-- Bước 1 -->
+    <tr>
+      <th style="width: 25%;">BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
+      <td>
+        <ul class="fs-5">
+          <li>1. Mô hình hệ thống điện thân xe</li>
+          <li>2. Đồng hồ VOM</li>
+          <li>3. Phần mềm tra cứu sơ đồ mạch điện</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- Bước 2 -->
+    <tr>
+      <th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
+      <td>
+        <ul class="fs-5">
+          <li>Dữ liệu trong hộp không được lưu trữ sau khi tắt khóa điện.</li>
+          <li>TAIL: hoạt động bình thường.</li>
+          <li>HEAD-LOW: hoạt động bình thường.</li>
+          <li>HEAD-HIGH: hoạt động bình thường.</li>
+          <li>AUTO: Đèn Tail không sáng.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- Bước 3 -->
+    <tr>
+      <th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
+      <td>
+        <div class="row" style="display: flex; align-items: flex-start;">
+          <div style="flex: 1;">
+            <ul class="fs-5">
+              <li>1. Đứt cầu chì 10A ECU B NO.1</li>
+              <li>2. Đứt dây nối giữa cầu chì 10A ECU B NO.1 với chân BECU (BCM)</li>
+              <li></li>
+            </ul>
+          </div>
+          <div style="text-align: center;">
+            <img src="../../img/Pan/BECU.png" alt="Sơ đồ BECU" class="img-fluid rounded shadow-sm" style="max-width: 100%; border: 1px solid #ccc;">
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Bước 4 -->
+    <tr>
+      <th>BƯỚC 4: ĐO KIỂM</th>
+      <td>
+        <h5>* Khóa điện bật ON</h5>
+        <table class="table table-bordered fs-5 align-middle" style="width: 100%; border-collapse: collapse;">
+          <thead class="table-light">
+            <tr>
+              <th>Khu vực nghi ngờ</th>
+              <th>Vị trí đo</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cầu chì 10A ECU B NO.1</td>
+              <td>1B & mass E2</td>
+              <td>Nếu giá trị điện áp tại điểm 1B & mass là 12v -> cầu chì vẫn còn sử dụng được</td>
+            </tr>
+            <tr>
+              <td>ID10</td>
+              <td>ID10 & Mass E2</td>
+              <td>Nếu giá trị điện áp 0V => không có nguồn đến</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Bước 5 -->
+    <tr>
+      <th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th>
+      <td>
+        <ul class="fs-5">
+          <li>ĐĐiện áp tại BECU là 0V thì đứt dây từ cầu chì 10A ECU B NO.1 đến chân số ID10.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- Bước 6 -->
+    <tr>
+      <th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th>
+      <td>
+        <ul class="fs-5">
+          <li>Ta tiến hành nối dây từ cầu chì 10A ECU B NO.1 đến chân số ID10.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <style>
+    .pancs-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #007bff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .pancs-table th {
+      background-color: #f1f7ff;
+      color: #0d47a1;
+      text-transform: uppercase;
+      width: 25%;
+      font-weight: bold;
+      border: 1px solid #007bff;
+      vertical-align: top;
+    }
+
+    .pancs-table td {
+      border: 1px solid #007bff;
+      padding: 10px 15px;
+      vertical-align: top;
+    }
+
+    .pancs-table ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .pancs-table tr:hover {
+      background-color: #f9fbff;
+      transition: 0.3s;
+    }
+
+    .table th, .table td {
+      border: 1px solid #007bff !important;
+      text-align: center;
+    }
+  </style>
+</section>

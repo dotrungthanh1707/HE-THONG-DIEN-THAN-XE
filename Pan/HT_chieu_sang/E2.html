@@ -1,0 +1,136 @@
+<section id="e2" style="padding: 20px;">
+  <h2 class="text-center mb-4">E2</h2>
+
+  <table class="pancs-table" border="1" cellspacing="0" cellpadding="8">
+    <!-- Bước 1 -->
+    <tr>
+      <th style="width:25%;">BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
+      <td>
+        <ul class="fs-5">
+          <li>1. MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE</li>
+          <li>2. ĐỒNG HỒ VOM</li>
+          <li>3. PHẦN MỀM TRA CỨU SƠ ĐỒ MẠCH ĐIỆN</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- Bước 2 -->
+    <tr>
+      <th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
+      <td>
+        <ul class="fs-5">
+          <li>TAIL: Đèn Tail không hoạt động.</li>
+          <li>HEAD-LOW: Không hoạt động.</li>
+          <li>HEAD-HIGH: Không hoạt động.</li>
+          <li>FLASH: Không hoạt động.</li>
+          <li>AUTO: Không hoạt động.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- Bước 3 -->
+    <tr>
+      <th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
+      <td>
+        <div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+          <div style="flex:1 1 260px;">
+            <ul class="fs-5">
+              <li>1. Đứt dây mass E2.</li>
+            </ul>
+          </div>
+          <div style="flex:1 1 320px; text-align:center;">
+            <!-- DÙNG data-src để script bên dưới chuẩn hoá đường dẫn khi load động -->
+            <img data-src="img/Pan/E2.png" alt="Sơ đồ E2" class="img-fluid rounded shadow-sm" style="max-width:100%; border:1px solid #ccc;">
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Bước 4 -->
+    <tr>
+      <th>BƯỚC 4: ĐO KIỂM</th>
+      <td>
+        <h5>* Khóa điện bật ON</h5>
+        <table class="table table-bordered fs-5 align-middle" style="width:100%; border-collapse:collapse;">
+          <thead class="table-light">
+            <tr>
+              <th>Vị trí đo kiểm</th>
+              <th>Điện áp</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kiểm tra mass E2</td>
+              <td>EL Dimmer SW &amp; Mass E2 = 0V</td>
+              <td>Nếu điện áp = 12V → đứt mass E2.</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Bước 5 -->
+    <tr>
+      <th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th>
+      <td>
+        <ul class="fs-5">
+          <li>Nếu điện áp tại EL là 12V → đứt dây mass E2.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- Bước 6 -->
+    <tr>
+      <th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th>
+      <td>
+        <ul class="fs-5">
+          <li>Tiến hành nối lại dây mass E2.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <style>
+    .pancs-table{
+      width:100%;
+      border-collapse:collapse;
+      border:2px solid #007bff;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      border-radius:8px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .pancs-table th{
+      background:#f1f7ff;
+      color:#0d47a1;
+      text-transform:uppercase;
+      width:25%;
+      font-weight:bold;
+      border:1px solid #007bff;
+      vertical-align:top;
+      padding:10px 12px;
+    }
+    .pancs-table td{
+      border:1px solid #007bff;
+      padding:10px 15px;
+      vertical-align:top;
+    }
+    .pancs-table ul{ margin:0; padding-left:20px; }
+    .pancs-table tr:hover{ background:#f9fbff; transition:.3s; }
+
+    /* đồng bộ viền trong bảng con */
+    .table th, .table td{ border:1px solid #007bff !important; text-align:center; }
+  </style>
+
+  <script>
+    // Chuẩn hoá mọi <img data-src> -> src tuyệt đối (an toàn khi load động/GitHub Pages)
+    document.querySelectorAll('#e2 img[data-src]').forEach(img=>{
+      try{
+        img.src = new URL(img.getAttribute('data-src'), window.location.href).href;
+      }catch(e){
+        img.src = img.getAttribute('data-src'); // fallback
+      }
+    });
+  </script>
+</section>

@@ -1,0 +1,151 @@
+<section id="tail" style="padding:20px;">
+  <h2 class="text-center mb-4">TAIL</h2>
+
+  <table class="pan-table" cellspacing="0" cellpadding="0">
+    <!-- BƯỚC 1 -->
+    <tr>
+      <th>BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
+      <td>
+        <ul style="font-size:larger;">
+          <li>1. MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE</li>
+          <li>2. ĐỒNG HỒ VOM</li>
+          <li>3. PHẦN MỀM TRA CỨU SƠ ĐỒ MẠCH ĐIỆN</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 2 -->
+    <tr>
+      <th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
+      <td>
+        <ul style="font-size:larger;">
+          <li>TAIL: Đèn Tail không hoạt động.</li>
+          <li>HEAD-LOW: Hoạt động bình thường.</li>
+          <li>HEAD-HIGH: Đèn pha bên phải không sáng.</li>
+          <li>FLASH: Đèn pha bên phải không sáng.</li>
+          <li>AUTO: Đèn Tail không sáng.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 3 -->
+    <tr>
+      <th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
+      <td>
+        <div class="row-in">
+          <div class="col-in">
+            <ul style="font-size:larger;">
+              <li>1. Đứt cầu chì 15A HLP (RH).</li>
+              <li>2. Hỏng đèn Head.</li>
+            </ul>
+          </div>
+          <figure class="col-in fig">
+            <img src="img/Pan/RH_right.png" alt="Sơ đồ khu vực nghi ngờ">
+            <figcaption>Sơ đồ liên quan TAIL</figcaption>
+          </figure>
+        </div>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 4 -->
+    <tr>
+      <th>BƯỚC 4: ĐO KIỂM</th>
+      <td>
+        <h5 class="mt0" style="font-size:larger;">* Khóa điện bật ON và công tắc bật ở vị trí HEAD</h5>
+        <table class="inner-table" style="font-size:larger;">
+          <thead>
+            <tr>
+              <th>Khu vực nghi ngờ</th>
+              <th style="width:40%;">Vị trí đo</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cầu chì 15A HLP(RH)</td>
+              <td>1B & A1 =12V	</td>
+              <td>NNếu giá trị điện áp tại điểm 1B & A1= 0V cầu chì còn sủ dụng được</td>
+            </tr>
+            <tr>
+              <td>Đèn HEAD</td>
+              <td>Nút sau đèn & A1	</td>
+              <td>Giá trị điện áp 12v ==> đứt đèn</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 5 -->
+    <tr>
+      <th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th>
+      <td>
+        <ul style="font-size:larger;">
+          <li>Điện áp tại bóng đèn là 12V thì đứt dây mass bóng đèn.</li>
+        </ul>
+      </td>
+    </tr>
+
+    <!-- BƯỚC 6 -->
+    <tr>
+      <th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th>
+      <td>
+        <ul style="font-size:larger;">
+          <li>Thay đèn khác hoặc cầu chì nếu bị đứt.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <style>
+    /* Bảng chính (BƯỚC | NỘI DUNG) */
+    .pan-table{
+      width:100%;
+      border-collapse:collapse;
+      background:#fff;
+      border:2px solid #0d6efd;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+    }
+    .pan-table th, .pan-table td{
+      border:1px solid #0d6efd;
+      vertical-align:top;
+      padding:12px 14px;
+    }
+    .pan-table th{
+      width:28%;
+      background:#eef6ff;
+      color:#0b2c6b;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .pan-table tr:hover{ background:#f9fbff; }
+
+    /* 2 cột trong nội dung (list + ảnh) */
+    .row-in{ display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap; }
+    .row-in .col-in{ flex:1 1 260px; }
+    .row-in .fig{ text-align:center; }
+    .row-in img{
+      max-width:100%;
+      border-radius:10px;
+      border:1px solid #d9e2ef;
+      box-shadow:0 4px 10px rgba(0,0,0,.06);
+    }
+    .row-in figcaption{ font-size:14px; color:#556; margin-top:6px; }
+    .mt0{ margin-top:0; }
+
+    /* Bảng đo kiểm lồng */
+    .inner-table{ width:100%; border-collapse:collapse; }
+    .inner-table th, .inner-table td{
+      border:1px solid #0d6efd;
+      text-align:center;
+      padding:8px;
+    }
+    .inner-table thead th{ background:#e8f1ff; }
+    .inner-table tbody tr:hover{ background:#f0f8ff; transition:.2s; }
+
+    /* Responsive nhỏ */
+    @media (max-width: 768px){
+      .pan-table th{ width:36%; }
+    }
+  </style>
+</section>
