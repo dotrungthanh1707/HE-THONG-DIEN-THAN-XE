@@ -13,7 +13,7 @@ img { max-width: 100%; height: auto; display: block; }
 .site-header { background-color: #b9cfd7; }
 /* ★ ép header container full width */
 .site-header .container,
-.site-header .container-fluid { max-width: 100% !important; padding-left: 12px; padding-right: 12px; }
+.site-header .container-fluid { max-width: 100% !important; padding-left: 25px; padding-right: 20px; }
 
 .site-header .brand-row { align-items: center; padding: 10px 0; }
 .site-header .logo img { width: 100%; max-width: 120px; }
