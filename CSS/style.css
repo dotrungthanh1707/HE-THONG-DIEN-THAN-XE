@@ -665,3 +665,39 @@ section img {
   }
 }
 
+/* Sidebar full height */
+aside.col-lg-3 {
+    min-height: 100vh;          /* kéo dài hết chiều cao màn hình */
+    background: #ffffff;        /* nền trắng (đổi theo ý bạn) */
+    border-right: 2px solid #0f4ea6; /* viền phải cho đẹp */
+    padding-top: 10px;
+}
+
+/* Đảm bảo sidebar tách biệt hoàn toàn */
+@media (min-width: 992px) {
+    .toc-panel {
+        background: transparent; /* bỏ nền panel để sidebar là nền chính */
+        border: none;
+        box-shadow: none;
+        padding: 0 10px;
+    }
+}
+
+.toc-link-single {
+  display: block;
+  padding: 8px 10px;
+  margin-top: 6px;
+  background: #f8fcff;
+  border: 1px solid #cfd8e3;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0b2c6b;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+
+.toc-link-single:hover {
+  background: #e7f1fb;
+  color: #0a4bb1;
+}

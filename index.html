@@ -115,10 +115,13 @@
                 </ul>
               </details>
             </li>
+    
+            
+           <li>
+  <a data-ajax href="Lien_he.html" class="toc-link-single">Liên hệ</a>
+</li>
 
-            <ul>
-             <li><a data-ajax href="Lien_he.html">Liên hệ</a></li>
-           </ul>
+
 
         </nav>
       </aside>
@@ -397,73 +400,70 @@ function absolutizeAttr(root, selector, attr, baseAbs) {
     e.preventDefault();
     loadPanContent(link.getAttribute('href'));
   });
-
-  // Tabs cho các trang con (nếu có)
-  (function () {
-    document.addEventListener('click', function (e) {
-      const btn = e.target.closest('.pill-tabs .tab-btn');
-      if (!btn) return;
-
-      e.preventDefault();
-      const id = btn.dataset.tab;
-      if (!id) return;
-
-      const scope = btn.closest('.overview') || document.querySelector('#main-content');
-      if (!scope) return;
-
-      scope.querySelectorAll('.pill-tabs .tab-btn').forEach(b => {
-        const on = b.dataset.tab === id;
-        b.classList.toggle('active', on);
-        b.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-
-      scope.querySelectorAll('.tab-panel').forEach(p => {
-        const on = p.id === id;
-        p.toggleAttribute('hidden', !on);
-        p.classList.toggle('active', on);
-      });
-
-      try {
-        const url = new URL(location.href);
-        url.hash = id;
-        history.replaceState(null, '', url);
-      } catch (_) {}
-    });
-
-    function activateByHash() {
-      const id = location.hash.replace('#', '');
-      if (!id) return;
-      const scope = document.querySelector('.overview');
-      if (!scope) return;
-      const btn = scope.querySelector(`.pill-tabs .tab-btn[data-tab="${id}"]`);
-      if (!btn) return;
-      btn.click();
-    }
-
-    window.addEventListener('hashchange', activateByHash);
-    document.addEventListener('DOMContentLoaded', activateByHash);
-    const obs = new MutationObserver(() => activateByHash());
-    obs.observe(document.getElementById('main-content'), { childList: true, subtree: false });
-  })();
-
-  document.addEventListener('DOMContentLoaded', function () {
+(function(){
   const grid = document.querySelector('.system-cards');
   const placeholder = document.querySelector('.system-placeholder');
 
   if (!grid || !placeholder) return;
 
-  // Ẩn grid lúc đầu – chỉ hiện placeholder
-  grid.classList.add('hidden');
-  placeholder.classList.remove('hidden');
+  const THRESHOLD = 1; // px: kéo xuống vượt ngưỡng sẽ hiện grid
 
-  // Khi click vào bất kỳ ảnh nào → show grid
-  placeholder.addEventListener('click', function () {
-    placeholder.classList.add('hidden');         // ẩn ảnh
-    grid.classList.remove('hidden');             // hiện grid
+  // hàm show/hide
+  function showGrid() {
+    placeholder.classList.add('hidden');
+    placeholder.setAttribute('aria-hidden','true');
 
-    grid.scrollIntoView({ behavior: 'smooth' }); // cuộn xuống đẹp
+    grid.classList.remove('hidden');
+    grid.setAttribute('aria-hidden','false');
+
+    // di chuyển focus đến grid cho accessibility (tùy chọn)
+    const firstCard = grid.querySelector('.system-card');
+    if (firstCard) firstCard.focus && firstCard.focus();
+  }
+
+  function hideGrid() {
+    grid.classList.add('hidden');
+    grid.setAttribute('aria-hidden','true');
+
+    placeholder.classList.remove('hidden');
+    placeholder.setAttribute('aria-hidden','false');
+  }
+
+  // scroll handler (debounce bằng rAF)
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY || window.pageYOffset;
+      if (y >= THRESHOLD) {
+        showGrid();
+      } else {
+        hideGrid();
+      }
+      ticking = false;
+    });
+  }
+
+  // click placeholder để bật grid ngay
+  placeholder.addEventListener('click', (e) => {
+    e.preventDefault();
+    showGrid();
+    // scroll nhẹ để reveal grid nếu cần
+    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
-});
+
+  // Khởi tạo: nếu trang đã scroll xuống khi load, set đúng trạng thái
+  document.addEventListener('DOMContentLoaded', onScroll);
+  window.addEventListener('load', onScroll);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ensure grid hidden initially if placeholder visible
+  if (!placeholder.classList.contains('hidden')) {
+    grid.classList.add('hidden');
+    grid.setAttribute('aria-hidden','true');
+  }
+})();
 
 
   </script>
