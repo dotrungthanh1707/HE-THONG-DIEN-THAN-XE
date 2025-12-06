@@ -23,7 +23,9 @@
     <div class="container-fluid">
       <div class="row brand-row">
         <div class="col-12 col-md-2 logo text-center">
-          <img src="img/logo-iuh.png" alt="Logo IUH" style="max-width:340px; width:100%; height:auto;">
+          <a href="/index.html">
+                      <img src="img/logo-iuh.png" alt="Logo IUH" style="max-width:340px; width:100%; height:auto;">
+          </a>
         </div>
         <div class="col-10 col-md-10 mt-5">
           <h1 class="text-center font-weight-bold">TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP THÀNH PHỐ HỒ CHÍ MINH</h1>
@@ -34,7 +36,7 @@
   </header>
 
   <!-- NAVBAR -->
-  <nav class="navbar" role="navigation">
+  <!-- <nav class="navbar" role="navigation">
     <ul>
       <li><a href="index.html" data-hard>Trang chủ</a></li>
       <li>
@@ -63,11 +65,12 @@
         </ul>
       </li>
       <li><a data-ajax href="Lien_he.html">Liên hệ</a></li>
-      <li><a data-ajax href="TAI_LIEU.html">Tài liệu tham khảo</a></li>
+      <li><a data-ajax href="TAI_LIEU.html">Tài liệu tham khảo</a></li> -->
       <!-- <li><a data-ajax href="Cac_cuc_ECU/Cu.html">Phụ lục</a></li> -->
-      <li><a data-ajax href="Cac_cuc_ECU/Cu1.html">Phụ lục</a></li>
-    </ul>
-  </nav>
+      <!-- <li><a data-ajax href="Cac_cuc_ECU/Cu1.html">Phụ lục</a></li> -->
+    <!-- </ul> -->
+  <!-- </nav> -->
+
 
   <div class="divider"></div>
 
@@ -75,7 +78,7 @@
   <main class="page">
     <div class="row align-items-start">
       <!-- Mục lục -->
-      <!-- <aside class="col-lg-3 mb-3">
+      <aside class="col-lg-3 mb-6">
         <nav class="toc-panel">
           <h4 class="toc-title">Mục lục</h4>
           <ul class="toc-list">
@@ -113,13 +116,15 @@
               </details>
             </li>
 
-            <li><a data-ajax href="Lien_he.html">Liên hệ</a></li>
-          </ul>
+            <ul>
+             <li><a data-ajax href="Lien_he.html">Liên hệ</a></li>
+           </ul>
+
         </nav>
-      </aside> -->
+      </aside>
 
       <!-- Nội dung chính -->
-      <section class="col-lg-12">
+      <section class="col-lg-9">
 <section id="main-content" class="content-card">
 
           <!-- HERO 50/50: chữ (trái) + slideshow (phải) -->
@@ -192,37 +197,45 @@
           <!-- /HERO 50/50 -->
 
           <!-- Các ô chọn hệ thống (3×3) -->
-          <div class="system-cards">
-            <a data-ajax href="Nguyen_ly_hoat_dong/HT_chieu_sang.html" class="system-card">
-              <img src="img/HT-chieu-sang.png" alt="Chiếu sáng">
-              <h4>HỆ THỐNG CHIẾU SÁNG</h4>
-            </a>
+          <!-- Placeholder: ảnh hiển thị ban đầu (giữa màn hình) -->
+<div class="system-placeholder active" aria-hidden="false" role="img" aria-label="Hệ thống tổng quan">
+  <img src="img/mattruoc.jpg" alt="Hệ thống tổng quan — Toyota Camry">
+  <img src="img/matsau.jpg  " alt="Hệ thống tổng quan — Toyota Camry">
+</div>
 
-            <a data-ajax href="Nguyen_ly_hoat_dong/HT_tin_hieu.html" class="system-card">
-              <img src="img/HT_Tin_hieu.png" alt="Tín hiệu">
-              <h4>HỆ THỐNG TÍN HIỆU</h4>
-            </a>
+<!-- Các ô chọn hệ thống (3×3) - KHỞI TẠI ẨN -->
+<div class="system-cards hidden" aria-hidden="true">
+  <a data-ajax href="Nguyen_ly_hoat_dong/HT_chieu_sang.html" class="system-card">
+    <img src="img/HT-chieu-sang.png" alt="Chiếu sáng">
+    <h4>HỆ THỐNG CHIẾU SÁNG</h4>
+  </a>
 
-            <a data-ajax href="Nguyen_ly_hoat_dong/HT_phun_nuoc_gat_mua.html" class="system-card">
-              <img src="img/HT_PhunNuoc_GatMua.png" alt="Phun nước">
-              <h4>HỆ THỐNG PHUN NƯỚC GẠT MƯA</h4>
-            </a>
+  <a data-ajax href="Nguyen_ly_hoat_dong/HT_tin_hieu.html" class="system-card">
+    <img src="img/HT_Tin_hieu.png" alt="Tín hiệu">
+    <h4>HỆ THỐNG TÍN HIỆU</h4>
+  </a>
 
-            <a data-ajax href="Pan/HT_chieu_sang/PANCS.html" class="system-card">
-              <img src="img/Pan_HT_Chieu_sang.png" alt="Pan chiếu sáng">
-              <h4>PAN HỆ THỐNG CHIẾU SÁNG</h4>
-            </a>
+  <a data-ajax href="Nguyen_ly_hoat_dong/HT_phun_nuoc_gat_mua.html" class="system-card">
+    <img src="img/HT_PhunNuoc_GatMua.png" alt="Phun nước">
+    <h4>HỆ THỐNG PHUN NƯỚC GẠT MƯA</h4>
+  </a>
 
-            <a data-ajax href="Pan/HT_tin_hieu/PANTH.html" class="system-card">
-              <img src="img/Pan-HT-tín-hiệu.png" alt="Pan tín hiệu">
-              <h4>PAN HỆ THỐNG TÍN HIỆU</h4>
-            </a>
+  <a data-ajax href="Pan/HT_chieu_sang/PANCS.html" class="system-card">
+    <img src="img/Pan_HT_Chieu_sang.png" alt="Pan chiếu sáng">
+    <h4>PAN HỆ THỐNG CHIẾU SÁNG</h4>
+  </a>
 
-            <a data-ajax href="Pan/HT_phun_nuoc_gat_mua/PANGM.html" class="system-card">
-              <img src="img/Pan_PhunNuoc_Gat_Mua.png" alt="Pan phun nước gạt mưa">
-              <h4>PAN HỆ THỐNG PHUN NƯỚC GẠT MƯA</h4>
-            </a>
-          </div>
+  <a data-ajax href="Pan/HT_tin_hieu/PANTH.html" class="system-card">
+    <img src="img/Pan-HT-tín-hiệu.png" alt="Pan tín hiệu">
+    <h4>PAN HỆ THỐNG TÍN HIỆU</h4>
+  </a>
+
+  <a data-ajax href="Pan/HT_phun_nuoc_gat_mua/PANGM.html" class="system-card">
+    <img src="img/Pan_PhunNuoc_Gat_Mua.png" alt="Pan phun nước gạt mưa">
+    <h4>PAN HỆ THỐNG PHUN NƯỚC GẠT MƯA</h4>
+  </a>
+</div>
+
         </section>
       </section>
 
@@ -433,41 +446,26 @@ function absolutizeAttr(root, selector, attr, baseAbs) {
     obs.observe(document.getElementById('main-content'), { childList: true, subtree: false });
   })();
 
-  // /* ===== Hero Slider – JS ===== */
-  // (function initCamrySlider(){
-  //   const root = document.getElementById('camry-slider');
-  //   if (!root) return;
+  document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.querySelector('.system-cards');
+  const placeholder = document.querySelector('.system-placeholder');
 
-  //   const slides = Array.from(root.querySelectorAll('.slide'));
-  //   const dots   = Array.from(root.querySelectorAll('.dot'));
-  //   const prevBtn = root.querySelector('.nav.prev');
-  //   const nextBtn = root.querySelector('.nav.next');
+  if (!grid || !placeholder) return;
 
-  //   let i = 0;
-  //   let timer = null;
-  //   const AUTOPLAY_MS = 1600;
+  // Ẩn grid lúc đầu – chỉ hiện placeholder
+  grid.classList.add('hidden');
+  placeholder.classList.remove('hidden');
 
-  //   function show(n){
-  //     i = (n + slides.length) % slides.length;
-  //     slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
-  //     dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-  //   }
-  //   function next(){ show(i + 1); }
-  //   function prev(){ show(i - 1); }
+  // Khi click vào bất kỳ ảnh nào → show grid
+  placeholder.addEventListener('click', function () {
+    placeholder.classList.add('hidden');         // ẩn ảnh
+    grid.classList.remove('hidden');             // hiện grid
 
-  //   function play(){ stop(); timer = setInterval(next, AUTOPLAY_MS); }
-  //   function stop(){ if (timer) clearInterval(timer); timer = null; }
+    grid.scrollIntoView({ behavior: 'smooth' }); // cuộn xuống đẹp
+  });
+});
 
-  //   nextBtn.addEventListener('click', () => { next(); play(); });
-  //   prevBtn.addEventListener('click', () => { prev(); play(); });
-  //   dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.index); play(); }));
 
-  //   root.addEventListener('mouseenter', stop);
-  //   root.addEventListener('mouseleave', play);
-
-  //   show(0);
-  //   play();
-  // })();
   </script>
 </body>
 </html>
