@@ -23,7 +23,7 @@
     <div class="container-fluid">
       <div class="row brand-row">
         <div class="col-12 col-md-2 logo text-center">
-          <a href="index.html">
+          <a href="index.html" data-hard>
                       <img src="img/logo-iuh.png" alt="Logo IUH" style="max-width:340px; width:100%; height:auto;">
           </a>
         </div>
@@ -485,15 +485,105 @@ document.addEventListener('DOMContentLoaded', function () {
   const lbImg = document.getElementById('lightbox-img');
   const lbClose = lb && lb.querySelector('.lb-close');
 
-  // safeguard
   if (!placeholder) return;
 
-  // ensure grid hidden initially (if desired)
-  if (grid) grid.classList.add('hidden');
+  /* ----------------------------
+     Accessibility helpers
+     ---------------------------- */
 
-  // Click handling on placeholder:
-  // - if click target is an image: open modal
-  // - otherwise: reveal grid
+  // Make an element focusable temporarily and focus it
+  function focusTemporarily(el) {
+    if (!el) return;
+    const hadTab = el.hasAttribute('tabindex');
+    const prevTab = el.getAttribute('tabindex');
+    try {
+      el.setAttribute('tabindex', '-1');
+      el.focus();
+    } catch (e) { /* ignore */ }
+    // remove the temporary tabindex shortly after to avoid altering DOM state
+    setTimeout(() => {
+      if (!hadTab) el.removeAttribute('tabindex');
+      else el.setAttribute('tabindex', prevTab);
+    }, 250);
+  }
+
+  // If any element inside `container` currently has focus, move focus to safe target
+  function moveFocusOutOf(container, safeTarget) {
+    const active = document.activeElement;
+    if (!active) return;
+    if (!container) return;
+    if (container.contains(active)) {
+      // prefer focusing the safeTarget (placeholder) if provided and visible
+      if (safeTarget && !safeTarget.classList.contains('hidden')) {
+        focusTemporarily(safeTarget);
+      } else {
+        try { active.blur(); } catch (_) {}
+        // fallback: focus body temporarily
+        focusTemporarily(document.body);
+      }
+    }
+  }
+
+  /* ----------------------------
+     Show / Hide grid safely
+     ---------------------------- */
+
+  function showGridSafe() {
+    if (!grid) return;
+    // remove any aria-hidden/inert on grid first
+    if ('inert' in HTMLElement.prototype) {
+      grid.inert = false;
+    } else {
+      grid.removeAttribute('aria-hidden');
+      // restore pointer events if we used a fallback
+      grid.style.pointerEvents = '';
+    }
+    grid.classList.remove('hidden');
+    grid.setAttribute('aria-hidden', 'false');
+
+    // focus first focusable element inside grid for accessibility
+    const firstFocusable = grid.querySelector('a, button, [tabindex], input, textarea, select');
+    if (firstFocusable) {
+      focusTemporarily(firstFocusable);
+    } else {
+      // fallback: focus grid itself
+      focusTemporarily(grid);
+    }
+  }
+
+  function hideGridSafe() {
+    if (!grid) return;
+    // If something inside grid has focus, move that focus out BEFORE hiding/aria-hidden
+    moveFocusOutOf(grid, placeholder);
+
+    // now safe to inert / aria-hide and hide with CSS class
+    if ('inert' in HTMLElement.prototype) {
+      grid.inert = true;
+    } else {
+      grid.setAttribute('aria-hidden', 'true');
+      // optional fallback to avoid pointer interactions
+      grid.style.pointerEvents = 'none';
+    }
+    grid.classList.add('hidden');
+  }
+
+  /* ----------------------------
+     Initialization
+     ---------------------------- */
+
+  // ensure grid hidden initially (if desired)
+  if (grid) {
+    // If you want grid hidden on load, use hideGridSafe().
+    // We call hideGridSafe to ensure any restored focus won't cause a race condition.
+    hideGridSafe();
+  }
+
+  /* ----------------------------
+     Placeholder click behavior:
+       - click image -> open lightbox
+       - click anywhere else in placeholder -> reveal grid (safe)
+     ---------------------------- */
+
   placeholder.addEventListener('click', function (e) {
     const target = e.target;
     if (target && target.tagName === 'IMG') {
@@ -507,24 +597,26 @@ document.addEventListener('DOMContentLoaded', function () {
         e.stopPropagation();
       }
     } else {
-      // clicked placeholder background -> reveal grid
+      // clicked placeholder background -> reveal grid safely
       if (grid) {
+        // hide placeholder first (it's not focusable in general)
         placeholder.classList.add('hidden');
         placeholder.setAttribute('aria-hidden', 'true');
-        grid.classList.remove('hidden');
-        grid.setAttribute('aria-hidden', 'false');
+
+        // then show grid in an accessible way
+        showGridSafe();
+
         // scroll to grid smoothly
         grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   });
 
-  // Also allow direct clicks on images to open (if they have separate listeners)
+  // Also allow direct clicks on images to open (precautionary)
   imgs.forEach(img => {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', (e) => {
-      // handled above by event delegation; this is precautionary
-      e.stopPropagation();
+      e.stopPropagation(); // ensure delegation doesn't also trigger show-grid
       if (lb && lbImg) {
         lbImg.src = img.getAttribute('src');
         lbImg.alt = img.getAttribute('alt') || '';
@@ -534,25 +626,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Close handlers for lightbox
+  /* ----------------------------
+     Lightbox handlers (close via button, backdrop, ESC)
+     ---------------------------- */
+
   function closeLightbox() {
     if (!lb) return;
     lb.classList.remove('active');
     lb.setAttribute('aria-hidden', 'true');
-    // clear src to free memory
-    lbImg.src = '';
+    // clear src to release memory
+    if (lbImg) lbImg.src = '';
+    // restore focus to a safe element (placeholder or first card)
+    if (placeholder && !placeholder.classList.contains('hidden')) {
+      focusTemporarily(placeholder);
+    } else if (grid) {
+      const firstFocusable = grid.querySelector('a, button, [tabindex], input, textarea, select');
+      if (firstFocusable) focusTemporarily(firstFocusable);
+      else focusTemporarily(document.body);
+    }
   }
 
   if (lbClose) lbClose.addEventListener('click', closeLightbox);
 
-  // click on backdrop to close (only if click exactly the backdrop)
   if (lb) {
     lb.addEventListener('click', (ev) => {
       if (ev.target === lb) closeLightbox();
     });
   }
 
-  // ESC key to close
+  // ESC key to close lightbox
   document.addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape') {
       if (lb && lb.classList.contains('active')) {
@@ -561,8 +663,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  /* ----------------------------
+     Optional: expose functions for debugging
+     ---------------------------- */
+  window._showSystemGridSafe = showGridSafe;
+  window._hideSystemGridSafe = hideGridSafe;
 });
 
+if (!link) return;
 
   </script>
 </body>
