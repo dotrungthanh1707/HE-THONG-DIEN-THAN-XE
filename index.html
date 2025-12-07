@@ -272,7 +272,7 @@
 
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[data-ajax], .toc-panel a, .navbar a');
-      if (!link) return;
+if (link.hasAttribute('data-hard')) return;
       const url = link.getAttribute('href') || '';
       const isSpecial = !url || url === '#' || /\.pdf$/i.test(url);
       if (isSpecial) return;
