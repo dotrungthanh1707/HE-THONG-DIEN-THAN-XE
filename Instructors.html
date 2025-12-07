@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="CSS/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+  
 
   <style>
     /* ===== TRANG THÀNH VIÊN ===== */
@@ -14,7 +15,47 @@
       background-color: #eff9fc;
       font-family: "Times New Roman", serif;
       color: #262261;
+      margin: 0;
+      padding: 0;
     }
+    
+    .divider {
+      height: 2px;
+      background-color: #ccc;
+      margin: 0;
+    }
+    
+    /* Header styling */
+    .site-header .container-fluid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .logo {
+      flex: 0 0 auto;
+    }
+    .logo img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .header-text {
+      flex: 1;
+    }
+    .header-text h1 {
+      font-size: clamp(34px, 2.8vw, 28px);
+      font-weight: 700;
+      margin: 5px 0;
+      line-height: 1.4;
+      text-align: center;
+    }
+
     .members-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -80,26 +121,58 @@
     .member-info a:hover {
       text-decoration: underline;
     }
+    
+    .site-footer {
+      padding: 20px;
+      text-align: center;
+    }
+    .footer-left {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .links-container a {
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 16px;
+      display: inline-block;
+      margin-top: 10px;
+    }
 
     @media (max-width: 768px) {
-      .member-card { flex: 0 0 240px; }
+      .brand-row {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .logo img {
+        max-width: 200px;
+      }
+      .header-text h1 {
+        font-size: clamp(14px, 3vw, 18px);
+      }
+      .member-card { 
+        flex: 0 0 240px; 
+      }
     }
     @media (max-width: 480px) {
-      .member-card { flex: 0 0 220px; }
+      .member-card { 
+        flex: 0 0 220px; 
+      }
     }
   </style>
 </head>
 <body>
 
   <header class="site-header">
-    <div class="container">
-      <div class="row brand-row">
-        <div class="col-12 col-md-2 logo text-center">
-          <img src="img/logo-iuh.png" alt="Logo IUH" style="max-width:120px;">
+    <div class="container-fluid">
+      <div class="brand-row">
+        <div class="logo">
+          <a href="/index.html">
+            <img src="img/logo-iuh.png" alt="Logo IUH">
+          </a>
         </div>
-        <div class="col-12 col-md-10">
-          <h3 class="text-center font-weight-bold">TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP TP. HỒ CHÍ MINH</h3>
-          <h3 class="text-center font-weight-bold">KHOA CÔNG NGHỆ ĐỘNG LỰC</h3>
+        <div class="header-text">
+          <h1>TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP THÀNH PHỐ HỒ CHÍ MINH</h1>
+          <h1>KHOA CÔNG NGHỆ ĐỘNG LỰC</h1>
         </div>
       </div>
     </div>
