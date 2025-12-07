@@ -209,6 +209,12 @@
   <img src="img/mattruoc.jpg" alt="Hệ thống tổng quan — Toyota Camry">
   <img src="img/matsau.jpg  " alt="Hệ thống tổng quan — Toyota Camry">
 </div>
+<!-- LIGHTBOX (MODAL) để phóng lớn ảnh -->
+<div id="img-lightbox" class="img-lightbox" aria-hidden="true" role="dialog" aria-label="Xem ảnh">
+  <button class="lb-close" aria-label="Đóng">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 
 <!-- Các ô chọn hệ thống (3×3) - KHỞI TẠI ẨN -->
 <div class="system-cards hidden" aria-hidden="true">
@@ -468,6 +474,94 @@ function absolutizeAttr(root, selector, attr, baseAbs) {
     grid.setAttribute('aria-hidden','true');
   }
 })();
+
+document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.querySelector('.system-cards');
+  const placeholder = document.querySelector('.system-placeholder');
+  const imgs = document.querySelectorAll('.system-placeholder img');
+
+  // Lightbox elements
+  const lb = document.getElementById('img-lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbClose = lb && lb.querySelector('.lb-close');
+
+  // safeguard
+  if (!placeholder) return;
+
+  // ensure grid hidden initially (if desired)
+  if (grid) grid.classList.add('hidden');
+
+  // Click handling on placeholder:
+  // - if click target is an image: open modal
+  // - otherwise: reveal grid
+  placeholder.addEventListener('click', function (e) {
+    const target = e.target;
+    if (target && target.tagName === 'IMG') {
+      // open lightbox with clicked image
+      if (lb && lbImg) {
+        lbImg.src = target.getAttribute('src');
+        lbImg.alt = target.getAttribute('alt') || '';
+        lb.classList.add('active');
+        lb.setAttribute('aria-hidden', 'false');
+        // prevent showing grid when clicking image
+        e.stopPropagation();
+      }
+    } else {
+      // clicked placeholder background -> reveal grid
+      if (grid) {
+        placeholder.classList.add('hidden');
+        placeholder.setAttribute('aria-hidden', 'true');
+        grid.classList.remove('hidden');
+        grid.setAttribute('aria-hidden', 'false');
+        // scroll to grid smoothly
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+
+  // Also allow direct clicks on images to open (if they have separate listeners)
+  imgs.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', (e) => {
+      // handled above by event delegation; this is precautionary
+      e.stopPropagation();
+      if (lb && lbImg) {
+        lbImg.src = img.getAttribute('src');
+        lbImg.alt = img.getAttribute('alt') || '';
+        lb.classList.add('active');
+        lb.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+
+  // Close handlers for lightbox
+  function closeLightbox() {
+    if (!lb) return;
+    lb.classList.remove('active');
+    lb.setAttribute('aria-hidden', 'true');
+    // clear src to free memory
+    lbImg.src = '';
+  }
+
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+
+  // click on backdrop to close (only if click exactly the backdrop)
+  if (lb) {
+    lb.addEventListener('click', (ev) => {
+      if (ev.target === lb) closeLightbox();
+    });
+  }
+
+  // ESC key to close
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') {
+      if (lb && lb.classList.contains('active')) {
+        closeLightbox();
+      }
+    }
+  });
+
+});
 
 
   </script>

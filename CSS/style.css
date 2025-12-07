@@ -701,3 +701,57 @@ aside.col-lg-3 {
   background: #e7f1fb;
   color: #0a4bb1;
 }
+
+
+/* LIGHTBOX / MODAL */
+.img-lightbox {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.85);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s ease;
+  z-index: 9999;
+  padding: 20px;
+}
+.img-lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ảnh trong modal */
+.img-lightbox img {
+  max-width: 94%;
+  max-height: 88vh;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  transform-origin: center;
+  animation: lbZoom .2s ease;
+}
+@keyframes lbZoom { from { transform: scale(.95); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+
+/* nút đóng */
+.img-lightbox .lb-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+}
+.img-lightbox .lb-close:hover { transform: scale(1.08); }
+
+/* make sure modal is touch-friendly */
+@media (max-width: 576px) {
+  .img-lightbox img { max-height: 78vh; }
+  .img-lightbox .lb-close { font-size: 36px; right: 12px; top: 12px; }
+}
