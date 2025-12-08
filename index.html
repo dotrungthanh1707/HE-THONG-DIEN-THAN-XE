@@ -88,7 +88,7 @@
                 <ul>
                   <li><a data-ajax href="Gioi_thieu/Tong_quan.html">Tổng quan</a></li>
                   <li><a data-ajax href="Gioi_thieu/Chi_tiet_mo_hinh.html">Chi tiết mô hình</a></li>
-                  <li><a data-ajax href="Gioi_thieu/Hoat_dong_mo_hinh.html">Hoạt động mô hình</a></li>
+                  <li><a data-ajax href="Gioi_thieu/Hoat_dong_mo_hinh.html">Video hoạt động mô hình</a></li>
                   <li><a data-ajax href="Gioi_thieu/Ket_qua.html">Kết quả đạt được</a></li>
                 </ul>
               </details>
@@ -121,7 +121,7 @@
             
            <li>
 
-            
+            </li>
   <a data-ajax href="Lien_he.html" class="toc-link-single">Liên hệ</a>
 </li>
 
@@ -132,7 +132,7 @@
 
       <!-- Nội dung chính -->
       <section class="col-lg-9">
-<section id="main-content" class="content-card">
+<div id="main-content" class="content-card">
 
           <!-- HERO 50/50: chữ (trái) + slideshow (phải) -->
           <div class="hero-split row no-gutters align-items-center mb-3">
@@ -249,7 +249,7 @@
   </a>
 </div>
 
-        </section>
+        </div>
       </section>
 
     </div>
@@ -272,7 +272,7 @@
 
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[data-ajax], .toc-panel a, .navbar a');
-if (link.hasAttribute('data-hard')) return;
+      if (!link) return;
       const url = link.getAttribute('href') || '';
       const isSpecial = !url || url === '#' || /\.pdf$/i.test(url);
       if (isSpecial) return;
@@ -669,6 +669,133 @@ document.addEventListener('DOMContentLoaded', function () {
   window._showSystemGridSafe = showGridSafe;
   window._hideSystemGridSafe = hideGridSafe;
 });
+  
+// --- Delegated tab handler: không cần bind lại sau AJAX ---
+(function () {
+  'use strict';
+
+  // Helper: show panel by id within the same fragment/root
+  function showPanelWithinRoot(root, id, triggerBtn) {
+    if (!id) return;
+    // find the panels container within the same root
+    const panels = Array.from(root.querySelectorAll('.tab-panel'));
+    const buttons = Array.from(root.querySelectorAll('.tab-btn'));
+
+    if (panels.length === 0 && buttons.length === 0) return;
+
+    panels.forEach(p => {
+      if (p.id === id) {
+        p.classList.add('active');
+        p.removeAttribute('hidden');
+      } else {
+        p.classList.remove('active');
+        p.setAttribute('hidden', '');
+      }
+    });
+
+    buttons.forEach(b => {
+      const tid = b.getAttribute('data-tab');
+      if (tid === id) {
+        b.classList.add('active');
+        b.setAttribute('aria-selected', 'true');
+      } else {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      }
+    });
+
+    if (triggerBtn) {
+      try { triggerBtn.focus(); } catch (e) {}
+    }
+  }
+
+  // Find the nearest root for a tabs control: prefer [data-fragment] or .card-content
+  function findTabsRoot(el) {
+    return el.closest('[data-fragment]') || el.closest('.card-content') || el.closest('#main-content') || document;
+  }
+
+  // Global click delegation
+  document.addEventListener('click', function (ev) {
+    const btn = ev.target.closest('.tab-btn');
+    if (!btn) return;
+    // ensure it's a button-like element
+    ev.preventDefault();
+    const tabId = btn.getAttribute('data-tab');
+    const root = findTabsRoot(btn);
+    showPanelWithinRoot(root, tabId, btn);
+  });
+
+  // Keydown delegation for keyboard support (Enter/Space/Arrows)
+  document.addEventListener('keydown', function (ev) {
+    const active = document.activeElement;
+    if (!active) return;
+    if (!active.classList || !active.classList.contains('tab-btn')) return;
+
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      ev.preventDefault();
+      const id = active.getAttribute('data-tab');
+      const root = findTabsRoot(active);
+      showPanelWithinRoot(root, id, active);
+      return;
+    }
+
+    if (ev.key === 'ArrowRight' || ev.key === 'ArrowLeft') {
+      ev.preventDefault();
+      const root = findTabsRoot(active);
+      const buttons = Array.from(root.querySelectorAll('.tab-btn'));
+      if (!buttons.length) return;
+      const i = buttons.indexOf(active);
+      if (i === -1) return;
+      let next = i + (ev.key === 'ArrowRight' ? 1 : -1);
+      if (next < 0) next = buttons.length - 1;
+      if (next >= buttons.length) next = 0;
+      buttons[next].focus();
+    }
+  });
+
+  // If fragment is injected by AJAX, some panels may not be initialized.
+  // Call this to ensure each tab-group has exactly one visible panel on injection.
+  function syncTabInitialState(root = document) {
+    const groups = root.querySelectorAll('.pill-tabs');
+    groups.forEach(tabs => {
+      const r = findTabsRoot(tabs);
+      const buttons = Array.from(r.querySelectorAll('.tab-btn'));
+      const panels = Array.from(r.querySelectorAll('.tab-panel'));
+      if (!buttons.length || !panels.length) return;
+
+      // if any panel already visible (no hidden attr) leave it; else check for active button
+      const visible = panels.filter(p => !p.hasAttribute('hidden'));
+      if (visible.length === 0) {
+        const activeBtn = buttons.find(b => b.classList.contains('active')) || buttons[0];
+        if (activeBtn) {
+          const id = activeBtn.getAttribute('data-tab');
+          showPanelWithinRoot(r, id, null);
+        } else {
+          // fallback: show first panel
+          const first = panels[0];
+          if (first && first.id) showPanelWithinRoot(r, first.id, null);
+        }
+      } else {
+        // ensure aria-selected matches visible panel
+        const visibleId = visible[0].id;
+        buttons.forEach(b => {
+          b.setAttribute('aria-selected', (b.getAttribute('data-tab') === visibleId).toString());
+          b.classList.toggle('active', b.getAttribute('data-tab') === visibleId);
+        });
+        panels.forEach(p => p.classList.toggle('active', !p.hasAttribute('hidden')));
+      }
+    });
+  }
+
+  // expose for manual use after AJAX injection
+  window._syncTabInitialState = syncTabInitialState;
+
+  // Auto-run once on load so static pages work
+  document.addEventListener('DOMContentLoaded', function () {
+    syncTabInitialState(document);
+  });
+
+})();
 
 
   </script>
