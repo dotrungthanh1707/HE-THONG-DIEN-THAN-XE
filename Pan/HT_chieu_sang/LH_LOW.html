@@ -1,133 +1,47 @@
-<section id="tail-section" style="padding:20px;">
-  <h2 class="text-center mb-4">LH LOW</h2>
+<section id="pan-lo-sw" style="padding:20px;">
+  <h2 class="text-center mb-4">LO / WASHER SW</h2>
 
-  <table class="pan-table" border="1" cellspacing="0" cellpadding="8">
-    <!-- BƯỚC 1 -->
-    <tr>
-      <th>BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
+  <table class="pancs-table" border="1" cellspacing="0" cellpadding="8">
+    <tr><th>BƯỚC 1: CHUẨN BỊ DỤNG CỤ</th>
       <td>
-        <ul style="margin:0;">
-          <li>1. MÔ HÌNH HỆ THỐNG ĐIỆN THÂN XE</li>
-          <li>2. ĐỒNG HỒ VOM</li>
-          <li>3. PHẦN MỀM TRA CỨU SƠ ĐỒ MẠCH ĐIỆN</li>
-        </ul>
-      </td>
-    </tr>
+        <ul class="fs-5"><li>1. Mô hình hệ thống điện thân xe</li><li>2. Đồng hồ VOM</li><li>3. Phần mềm tra cứu sơ đồ mạch điện</li></ul>
+      </td></tr>
 
-    <!-- BƯỚC 2 -->
-    <tr>
-      <th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
+    <tr><th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
       <td>
-        <ul style="margin:0;">
-          <li>TAIL: Đèn Tail hoạt động bình thường.</li>
-          <li>HEAD-LOW: Đèn cos bên phải không sáng.</li>
-          <li>HEAD-HIGH: Hoạt động bình thường.</li>
-          <li>FLASH: Hoạt động bình thường.</li>
-          <li>AUTO: Đèn cos bên phải không sáng.</li>
-        </ul>
-      </td>
-    </tr>
+        <ul class="fs-5"><li>LO: Motor gạt nước không hoạt động</li><li>HI: Motor gạt nước hoạt động bình thường</li><li>INT: Motor gạt nước hoạt động bình thường</li><li>WASHER SW: Motor rửa kính hoạt động bình thường</li></ul>
+      </td></tr>
 
-    <!-- BƯỚC 3 -->
-    <tr>
-      <th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
-      <td>
-        <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
-          <div style="flex:1 1 260px;">
-            <ul style="margin:0;">
-              <li>1. Đứt cầu chì 15A HLP (LL).</li>
-              <li>2. Hỏng đèn Head bên trái.</li>
-            </ul>
-          </div>
-          <figure style="flex:1 1 260px; margin:0; text-align:center;">
-            <img src="img/Pan/LH_right.png" alt="Sơ đồ liên quan TAIL" style="max-width:100%; border-radius:10px; border:1px solid #d9e2ef;">
-            <figcaption style="font-size:14px; color:#446; margin-top:6px;">Sơ đồ khu vực nghi ngờ</figcaption>
-          </figure>
-        </div>
-      </td>
-    </tr>
+    <tr><th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
+      <td style="display:flex;gap:18px;">
+        <div style="flex:1;"><ul class="fs-5" style="margin:0;"><li>1. Đứt dây từ chân +1 Wiper SW đến +1 motor gạt nước</li><li>2. Đứt tiếp điểm LO của Wiper SW</li><li>3. Hỏng motor gạt nước</li></ul></div>
+        <div style="flex:1;text-align:center;"><img src="img/Pan/LO_SW.png" alt="LO_SW" style="max-width:100%;border-radius:8px;"></div>
+      </td></tr>
 
-    <!-- BƯỚC 4 -->
     <tr>
       <th>BƯỚC 4: ĐO KIỂM</th>
       <td>
-        <h5 style="margin-top:0;">* Khóa điện bật ON &amp; công tắc ở vị trí HEAD</h5>
-        <table class="inner-table" style="width:100%; border-collapse:collapse;">
-          <thead>
-            <tr>
-              <th>Khu vực nghi ngờ</th>
-              <th style="width:40%;">Vị trí đo</th>
-              <th>Ghi chú</th>
-            </tr>
-          </thead>
+        <h5>*Khóa điện bật ON, công tắc ở vị trí LOW</h5>
+        <table class="table table-bordered fs-5" style="width:100%;border-collapse:collapse;">
+          <thead><tr><th>Khu vực nghi ngờ</th><th>Vị trí đo kiểm</th><th>Ghi chú</th></tr></thead>
           <tbody>
-            <tr>
-              <td>Cầu chì 15A HLP (LL)</td>
-              <td>1B 15A HLP & Mass A1 =12V	</td>
-              <td>Nếu giá trị điện áp tại điểm 1B & mass A1 là 12v -> cầu chì còn sử dụng được</td>
-            </tr>
-            <tr>
-              <td>HEAD-LOW</td>
-              <td>2B & mass A1= 0V	</td>
-              <td>Giá trị điện áp 0V đèn còn sử dụng được.</td>
-            </tr>
+            <tr data-img-src="img/Pan/LO_1.png"><td>Công tắc LO</td><td>+1 (Wiper SW) &amp; MASS E3 = 12V</td><td>Nếu có 12V → hoạt động tốt</td></tr>
+            <tr data-img-src="img/Pan/LO_2.png"><td>Dây +1</td><td>+1 Motor &amp; E3 = 0V</td><td>Kiểm tra dây nối giữa +1 SW và motor</td></tr>
           </tbody>
         </table>
+
+        <div style="text-align:center;margin-top:8px;"><img id="lo-content-img" src="" alt="" style="width:80%;border-radius:8px;"></div>
+        <script>
+          (function(){
+            const rows = document.querySelectorAll('#pan-lo-sw table.table tbody tr');
+            const img = document.getElementById('lo-content-img');
+            rows.forEach(r => r.addEventListener('click', ()=> { const s = r.getAttribute('data-img-src'); if (s) img.src = s; }));
+          })();
+        </script>
       </td>
     </tr>
 
-    <!-- BƯỚC 5 -->
-    <tr>
-      <th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th>
-      <td>
-        <ul style="margin:0;">
-          <li>Điện áp tại bóng đèn là 12V thì đứt dây mass bóng đèn.</li>
-        </ul>
-      </td>
-    </tr>
-
-    <!-- BƯỚC 6 -->
-    <tr>
-      <th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th>
-      <td>
-        <ul style="margin:0;">
-          <li>Thay bóng Head hỏng / phục hồi mass A1 nếu đứt.</li>
-        </ul>
-      </td>
-    </tr>
+    <tr><th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th><td><ul class="fs-5"><li>Nếu điện áp tại nút +1 = 0V → Đứt tiếp điểm LO của Wiper SW</li></ul></td></tr>
+    <tr><th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th><td><ul class="fs-5"><li>Thay công tắc Windshield Wiper SW mới</li></ul></td></tr>
   </table>
-
-  <style>
-    .pan-table{
-      width:100%;
-      border-collapse:collapse;
-      border:2px solid #007bff;
-      background:#fff;
-      box-shadow:0 4px 10px rgba(0,0,0,0.08);
-      font-size:larger;
-    }
-    .pan-table th{
-      width:30%;
-      background:#f1f7ff;
-      color:#0d47a1;
-      text-transform:uppercase;
-      font-weight:700;
-      border:1px solid #007bff;
-      vertical-align:top;
-      padding:10px 12px;
-    }
-    .pan-table td{
-      border:1px solid #007bff;
-      padding:10px 14px;
-      vertical-align:top;
-    }
-    .pan-table tr:hover{ background:#f9fbff; transition:.2s; }
-
-    .inner-table th, .inner-table td{
-      border:1px solid #007bff;
-      text-align:center;
-      padding:6px;
-    }
-    .inner-table thead th{ background:#e8f1ff; }
-  </style>
 </section>

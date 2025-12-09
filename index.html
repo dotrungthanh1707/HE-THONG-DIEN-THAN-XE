@@ -15,7 +15,9 @@
 
   <!-- CSS riêng -->
   <link rel="stylesheet" href="CSS/style.css" />
-</head>
+  
+  <!-- <link rel="stylesheet" href="CSS/pan-wiper.css" /> -->
+
 
 <body>
   <!-- HEADER -->
@@ -88,7 +90,7 @@
                 <ul>
                   <li><a data-ajax href="Gioi_thieu/Tong_quan.html">Tổng quan</a></li>
                   <li><a data-ajax href="Gioi_thieu/Mo_hinh_he_thong_xe.html">Mô hình hệ thống xe Camry</a></li>
-                  <li><a data-ajax href="Gioi_thieu/Chi_tiet_mo_hinh.html">Chi tiết mô hình</a></li>
+                  <!-- <li><a data-ajax href="Gioi_thieu/Chi_tiet_mo_hinh.html">Chi tiết mô hình</a></li> -->
                   <li><a data-ajax href="Gioi_thieu/Hoat_dong_mo_hinh.html">Video hoạt động mô hình</a></li>
                   <li><a data-ajax href="Gioi_thieu/Ket_qua.html">Kết quả đạt được</a></li>
                 </ul>
@@ -915,6 +917,38 @@ document.addEventListener("click", function (e) {
   // document.querySelectorAll('.zoom-img').forEach(img => img.addEventListener('click', () => openLightbox(img.src, img.alt)));
 
 })();
+
+(function () {
+    // find all table rows with data-img-src across the document
+    const rows = document.querySelectorAll('tr[data-img-src]');
+    rows.forEach(row => {
+      row.style.cursor = 'pointer';
+      row.addEventListener('click', function () {
+        const src = row.getAttribute('data-img-src');
+        if (!src) return;
+        // try to find the nearest preview img inside same section, else fallback to first #content img
+        const section = row.closest('section');
+        const preview = section ? section.querySelector('img[id$="-content-img"], img#content') : null;
+        if (preview) {
+          preview.src = src;
+        } else {
+          // fallback: create temporary preview in section
+          if (section) {
+            let img = section.querySelector('.table-preview-img');
+            if (!img) {
+              img = document.createElement('img');
+              img.className = 'table-preview-img';
+              img.style.maxWidth = '80%';
+              img.style.borderRadius = '8px';
+              img.style.marginTop = '8px';
+              section.appendChild(img);
+            }
+            img.src = src;
+          }
+        }
+      });
+    });
+  })();
 
   </script>
 </body>

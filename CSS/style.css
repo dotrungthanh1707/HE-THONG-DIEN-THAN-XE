@@ -513,7 +513,7 @@ nav.navbar .dropdown a.active { background-color: #0a4bb1; color: #fff; }
 
 .duo-photos .photo {
   flex: 1 1 45%;
-  max-width: 48%;
+  max-width: 70%;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -524,7 +524,7 @@ nav.navbar .dropdown a.active { background-color: #0a4bb1; color: #fff; }
 .duo-photos img {
   display: block;
   width: 100%;
-  height: 350px;              /* ép cùng chiều cao */
+  height: 500px;              /* ép cùng chiều cao */
   object-fit: cover;          /* cắt vừa khung, không méo */
 }
 
@@ -867,10 +867,37 @@ aside.col-lg-3 {
 
   #simple-lightbox img,
 #zoomed-img {
-  max-width: none;
-  max-height: none;
-  width: auto;
-  height: auto;
+  max-width: 800px;
+  max-height: 100%;
+  width: 800px;
+  height: 100%;
   transform: scale(1.3);  /* tăng lên 130% */
   transform-origin: center center;
+}
+
+
+
+
+ .pancs-table th { text-align:left; vertical-align:top; background:#f8fafc; padding:10px; }
+  .pancs-table td { padding:12px; vertical-align:top; }
+  .inner-table td, .inner-table th { padding:8px; border:1px solid #e6eef6; }
+  @media (max-width: 768px) {
+    .pancs-table th { display:block; width:100%; }
+    .pancs-table td { display:block; width:100%; }
+  }
+
+
+  .reference-section h1 {
+  letter-spacing: 1px;
+}
+
+.reference-list {
+  padding-left: 20px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.reference-list li {
+  margin-bottom: 10px;
+  text-align: justify;
 }

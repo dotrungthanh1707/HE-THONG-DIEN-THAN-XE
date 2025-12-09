@@ -1,0 +1,93 @@
+/* Specific PAN section styling (applies to #pan-wiper-plus1 only) */
+#pan-wiper-plus1,
+#pan-wiper-plus1 .card,
+#pan-wiper-plus1 .card-header,
+#pan-wiper-plus1 .card-body {
+  -webkit-font-smoothing:antialiased;
+}
+
+/* section container */
+#pan-wiper-plus1 {
+  padding: 16px 12px;
+  background: transparent;
+}
+
+/* card appearance */
+#pan-wiper-plus1 .card {
+  border: 1px solid #007bff !important;
+  border-radius: 12px !important;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 18px rgba(3,57,114,0.06);
+  overflow: visible;
+  background: #fff;
+}
+
+/* header */
+#pan-wiper-plus1 .card-header {
+  padding: 10px 14px;
+  background: #f1f7ff !important;
+  border-bottom: 1px solid rgba(0,0,0,0.04) !important;
+  display: flex;
+  align-items: center;
+}
+
+/* header link */
+#pan-wiper-plus1 .card-header a {
+  display:block;
+  width:100%;
+  color:#0d47a1 !important;
+  font-weight:700;
+  font-size:18px;
+  text-decoration:none;
+}
+
+/* collapse body */
+#pan-wiper-plus1 .card-body {
+  padding: 14px !important;
+  font-size: 1.05rem;
+  color: #1f2a44;
+  background: #fff;
+}
+
+/* lists */
+#pan-wiper-plus1 ul { list-style: disc; padding-left: 20px !important; margin: 0; }
+#pan-wiper-plus1 li { font-size: 1.05rem; margin-bottom: 8px; }
+
+/* images */
+#pan-wiper-plus1 img {
+  width:100% !important;
+  height:auto !important;
+  border-radius:8px;
+  box-shadow: 0 6px 16px rgba(3,57,114,0.06);
+  border: 1px solid rgba(14,83,173,0.06);
+  display:block;
+}
+
+/* table */
+#pan-wiper-plus1 table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+}
+#pan-wiper-plus1 table th,
+#pan-wiper-plus1 table td {
+  border:1px solid #007bff !important;
+  padding:10px;
+  text-align:center;
+  vertical-align:middle;
+  font-size:1rem;
+}
+#pan-wiper-plus1 table th:first-child,
+#pan-wiper-plus1 table td:first-child {
+  font-weight:700;
+  background:#f7fbff;
+  color:#0d47a1;
+  text-transform:uppercase;
+}
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  #pan-wiper-plus1 .card-header a { font-size:16px; }
+  #pan-wiper-plus1 li { font-size:1rem; }
+  #pan-wiper-plus1 table th, #pan-wiper-plus1 table td { font-size:.95rem; padding:8px; }
+}
