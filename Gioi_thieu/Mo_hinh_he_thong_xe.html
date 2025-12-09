@@ -1,0 +1,103 @@
+<section class="model-info-box">
+
+  <h2 class="model-title">HỆ THỐNG ĐIỆN THÂN XE</h2>
+
+  <!-- ảnh (nhấn để phóng to) -->
+  <div class="model-photo-tabs" role="tablist" aria-label="Mặt trước/mặt sau">
+    <button class="tab active" data-img="front" aria-pressed="true">Mặt trước mô hình</button>
+    <button class="tab" data-img="rear" aria-pressed="false">Mặt sau mô hình</button>
+</div>
+
+  <div class="model-photo-view" aria-live="polite">
+<img id="img-front" class="photo zoom-img" src="img/mattruoc.jpg" 
+     alt="Mặt trước mô hình — Toyota Camry"  />
+
+
+<img id="img-rear" class="photo zoom-img" src="img/matsau.jpg"  
+     alt="Mặt sau mô hình — Toyota Camry" style="display:none"
+      />  </div>
+
+  <!-- GRID NỘI DUNG -->
+  <div class="info-grid">
+
+    <article class="info-card info-card--blue">
+      <h3>1. Công suất &amp; Hiệu suất</h3>
+      <p><strong>Công suất bóng đèn chính (Headlight)</strong></p>
+      <ul>
+        <li>Low Beam (H11): 55W</li>
+        <li>High Beam (9005): 60W</li>
+      </ul>
+
+      <p><strong>Đèn hậu (Tail/Stop)</strong></p>
+      <ul>
+        <li>Tail: 5W</li>
+        <li>Stop: 21W</li>
+      </ul>
+    </article>
+
+    <article class="info-card info-card--green">
+      <h3>2. Điều khiển</h3>
+      <p>Điều khiển qua công tắc <strong>Light Switch</strong></p>
+      <p><strong>Chế độ:</strong> OFF – PARK – TAIL – HEAD – AUTO</p>
+      <p>Điều khiển tự động qua cảm biến ánh sáng. <strong>BCM</strong> kiểm soát:</p>
+      <ul>
+        <li>Đèn hậu (TAIL)</li>
+        <li>Đèn định vị</li>
+        <li>Đèn biển số</li>
+        <li>Đèn pha / cốt (chế độ AUTO)</li>
+      </ul>
+    </article>
+
+    <article class="info-card info-card--purple">
+      <h3>3. Các linh kiện</h3>
+      <ul>
+        <li>Đèn head (pha/cốt)</li>
+        <li>Đèn Fog (sương mù)</li>
+        <li>Công tắc (Light switch, Fog switch, Hazard, Brake switch)</li>
+        <li>Motor gạt nước</li>
+        <li>Đèn washer</li>
+        <li>Đèn xi nhan</li>
+        <li>Đèn Tail / Đèn đuôi</li>
+        <li>Cục chớp (flasher)</li>
+        <li>Relay</li>
+        <li>BCM</li>
+      </ul>
+    </article>
+
+    <article class="info-card info-card--red">
+      <h3>4. Mạch điều khiển &amp; Chức năng</h3>
+      <p><strong>BCM đóng vai trò:</strong></p>
+      <ul>
+        <li>Nhận tín hiệu từ công tắc đèn</li>
+        <li>Điều khiển relay TAIL / HEAD</li>
+        <li>Giám sát dòng</li>
+        <li>Điều khiển đèn Coming Home / Leaving Home</li>
+      </ul>
+    </article>
+
+    <article class="info-card info-card--gold">
+      <h3>5. Tính năng thông minh</h3>
+      <ul>
+        <li><strong>Auto Light Control:</strong> bật/tắt tự động theo cảm biến</li>
+        <li>Cảnh báo quên tắt đèn</li>
+        <li>Giảm điện áp khi ACC / OFF</li>
+        <li>Điều khiển độ sáng táp-lô</li>
+      </ul>
+    </article>
+
+    <article class="info-card info-card--indigo">
+      <h3>6. Ghi chú</h3>
+      <p>Để tra cứu mạch chi tiết, mở phần <em>Sơ đồ mạch điện</em>. Các thông số là tổng hợp cơ bản; khi sửa chữa cần tuân thủ an toàn.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- Lightbox modal (đặt ở cuối body) -->
+<div id="simple-lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Phóng to hình">
+  <button class="lb-close" aria-label="Đóng">&times;</button>
+  <div class="lb-content" role="document">
+    <img src="" alt="" />
+  </div>
+</div>
+

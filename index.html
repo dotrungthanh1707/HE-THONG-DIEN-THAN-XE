@@ -87,6 +87,7 @@
                 <summary>Giới thiệu</summary>
                 <ul>
                   <li><a data-ajax href="Gioi_thieu/Tong_quan.html">Tổng quan</a></li>
+                  <li><a data-ajax href="Gioi_thieu/Mo_hinh_he_thong_xe.html">Mô hình hệ thống xe Camry</a></li>
                   <li><a data-ajax href="Gioi_thieu/Chi_tiet_mo_hinh.html">Chi tiết mô hình</a></li>
                   <li><a data-ajax href="Gioi_thieu/Hoat_dong_mo_hinh.html">Video hoạt động mô hình</a></li>
                   <li><a data-ajax href="Gioi_thieu/Ket_qua.html">Kết quả đạt được</a></li>
@@ -797,6 +798,123 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })();
 
+//////
+//  CHUYỂN ẢNH
+// =====================
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("tab")) {
+    const type = e.target.dataset.img;
+
+    document.querySelectorAll(".model-photo-tabs .tab").forEach(btn => {
+      btn.classList.remove("active");
+      btn.setAttribute("aria-pressed", "false");
+    });
+
+    e.target.classList.add("active");
+    e.target.setAttribute("aria-pressed", "true");
+
+    document.getElementById("img-front").style.display = (type === "front") ? "" : "none";
+    document.getElementById("img-rear").style.display  = (type === "rear")  ? "" : "none";
+  }
+});
+
+
+// =====================
+//  LIGHTBOX – CHẶN NULL
+// =====================\
+
+(function(){
+  // Tạo hoặc lấy lightbox; trả về {lb, lbImg, lbClose}
+  function ensureLightbox() {
+    let lb = document.getElementById('simple-lightbox');
+    let lbImg = document.getElementById('zoomed-img');
+
+    if (!lb) {
+      // tạo lightbox đơn giản nếu chưa có
+      lb = document.createElement('div');
+      lb.id = 'simple-lightbox';
+      lb.setAttribute('aria-hidden', 'true');
+      lb.style.cssText = 'position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:9999;padding:20px;';
+      lb.innerHTML = `
+        <button class="lb-close" aria-label="Đóng" style="position:absolute;top:18px;right:18px;background:#fff;border-radius:6px;border:0;padding:6px 10px;font-size:20px;cursor:pointer;">&times;</button>
+        <div class="lb-content" style="max-width:95%;max-height:95%;display:flex;align-items:center;justify-content:center;">
+          <img id="zoomed-img" src="" alt="" style="max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.6)"/>
+        </div>
+      `;
+      document.body.appendChild(lb);
+      lbImg = document.getElementById('zoomed-img');
+    } else if (!lbImg) {
+      // có container lightbox nhưng thiếu img → thêm img
+      const content = lb.querySelector('.lb-content') || (function(){
+        const c = document.createElement('div'); c.className='lb-content'; lb.appendChild(c); return c;
+      })();
+      lbImg = document.createElement('img');
+      lbImg.id = 'zoomed-img';
+      lbImg.style.cssText = 'max-width:100%;max-height:100%;border-radius:8px;';
+      content.appendChild(lbImg);
+    }
+
+    const lbClose = lb.querySelector('.lb-close');
+    return { lb, lbImg, lbClose };
+  }
+
+  function openLightbox(src, alt) {
+    const { lb, lbImg, lbClose } = ensureLightbox();
+    if (!lb || !lbImg) return; // phòng trường hợp cực hiếm
+    lbImg.src = src || '';
+    lbImg.alt = alt || '';
+    lb.style.display = 'flex';
+    lb.setAttribute('aria-hidden', 'false');
+    // focus để accessibility
+    if (lbClose) lbClose.focus();
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const { lb, lbImg } = ensureLightbox();
+    if (!lb || !lbImg) return;
+    lb.style.display = 'none';
+    lb.setAttribute('aria-hidden', 'true');
+    lbImg.src = '';
+    document.documentElement.style.overflow = '';
+  }
+
+  // Delegate click: mở khi click ảnh có class zoom-img
+  document.addEventListener('click', function(e) {
+    const el = e.target;
+    if (el && el.classList && el.classList.contains('zoom-img')) {
+      // nếu ảnh chưa có src (hiếm), bỏ qua
+      if (!el.src) return;
+      openLightbox(el.src, el.alt || '');
+      return;
+    }
+
+    // đóng bằng click vào nút đóng (các nút .lb-close do ensureLightbox tạo ra có class này)
+    if (el && el.classList && el.classList.contains('lb-close')) {
+      closeLightbox();
+      return;
+    }
+
+    // nếu click trúng nền lightbox thì đóng (đảm bảo lightbox tồn tại)
+    const lb = document.getElementById('simple-lightbox');
+    if (lb && e.target === lb) {
+      closeLightbox();
+      return;
+    }
+  });
+
+  // đóng bằng ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const lb = document.getElementById('simple-lightbox');
+      if (lb && lb.style.display !== 'none') closeLightbox();
+    }
+  });
+
+  // Tự gắn onclick cho ảnh hiện tại nếu bạn thích (không bắt buộc)
+  // document.querySelectorAll('.zoom-img').forEach(img => img.addEventListener('click', () => openLightbox(img.src, img.alt)));
+
+})();
 
   </script>
 </body>
