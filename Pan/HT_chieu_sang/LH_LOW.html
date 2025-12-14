@@ -9,24 +9,25 @@
 
     <tr><th>BƯỚC 2: TRIỆU CHỨNG HƯ HỎNG</th>
       <td>
-        <ul class="fs-5"><li>LO: Motor gạt nước không hoạt động</li><li>HI: Motor gạt nước hoạt động bình thường</li><li>INT: Motor gạt nước hoạt động bình thường</li><li>WASHER SW: Motor rửa kính hoạt động bình thường</li></ul>
+        <ul class="fs-5"><li>LTAIL: Đèn Tail hoạt động bình thường</li><li>HEAD-LOW: Đèn cos bên phải không sáng</li><li>HEAD-HIGH: Hoạt động bình thường.</li><li>FLASH: Hoạt động bình thường.
+</li><li>AUTO: Đèn cos bên phải không sáng</li></ul>
       </td></tr>
 
     <tr><th>BƯỚC 3: XÁC ĐỊNH KHU VỰC NGHI NGỜ</th>
       <td style="display:flex;gap:18px;">
-        <div style="flex:1;"><ul class="fs-5" style="margin:0;"><li>1. Đứt dây từ chân +1 Wiper SW đến +1 motor gạt nước</li><li>2. Đứt tiếp điểm LO của Wiper SW</li><li>3. Hỏng motor gạt nước</li></ul></div>
-        <div style="flex:1;text-align:center;"><img src="img/Pan/LO_SW.png" alt="LO_SW" style="max-width:100%;border-radius:8px;"></div>
+        <div style="flex:1;"><ul class="fs-5" style="margin:0;"><li>1. Đứt cầu chì 15A HLP (LL)./li><li>2. Hỏng đèn Head bên trái.</li></ul></div>
+        <div style="flex:1;text-align:center;"><img src="img/Pan/LH_SW.png" alt="LH_SW" style="max-width:100%;border-radius:8px;"></div>
       </td></tr>
 
     <tr>
       <th>BƯỚC 4: ĐO KIỂM</th>
       <td>
-        <h5>*Khóa điện bật ON, công tắc ở vị trí LOW</h5>
+        <h5>* Khóa điện bật ON & công tắc ở vị trí HEAD</h5>
         <table class="table table-bordered fs-5" style="width:100%;border-collapse:collapse;">
           <thead><tr><th>Khu vực nghi ngờ</th><th>Vị trí đo kiểm</th><th>Ghi chú</th></tr></thead>
           <tbody>
-            <tr data-img-src="img/Pan/LO_1.png"><td>Công tắc LO</td><td>+1 (Wiper SW) &amp; MASS E3 = 12V</td><td>Nếu có 12V → hoạt động tốt</td></tr>
-            <tr data-img-src="img/Pan/LO_2.png"><td>Dây +1</td><td>+1 Motor &amp; E3 = 0V</td><td>Kiểm tra dây nối giữa +1 SW và motor</td></tr>
+            <tr ><td>Cầu chì 15A HLP (LL)</td><td>1B 15A HLP & Mass A1 =12V</td><td>Nếu giá trị điện áp tại điểm 1B & mass A1 là 12v -> cầu chì còn sử dụng được</td></tr>
+            <tr ><td>HEAD-LOW</td><td>2B & mass A1= 0V</td><td>Giá trị điện áp 0V đèn còn sử dụng được.</td></tr>
           </tbody>
         </table>
 
@@ -41,7 +42,7 @@
       </td>
     </tr>
 
-    <tr><th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th><td><ul class="fs-5"><li>Nếu điện áp tại nút +1 = 0V → Đứt tiếp điểm LO của Wiper SW</li></ul></td></tr>
+    <tr><th>BƯỚC 5: XÁC ĐỊNH VỊ TRÍ HƯ HỎNG</th><td><ul class="fs-5"><li>Điện áp tại bóng đèn là 12V thì đứt dây mass bóng đèn.</li></ul></td></tr>
     <tr><th>BƯỚC 6: KHẮC PHỤC HƯ HỎNG</th><td><ul class="fs-5"><li>Thay công tắc Windshield Wiper SW mới</li></ul></td></tr>
   </table>
 </section>
