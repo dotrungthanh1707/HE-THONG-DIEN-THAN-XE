@@ -67,7 +67,7 @@
     </div>
 
     <!-- STEP 4: Wiper INT -->
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-header" id="step4Heading">
         <h5 class="mb-0">
           <button class="btn btn-link collapsed" type="button"
@@ -85,7 +85,53 @@
           <img src="img/NLHD/WASHER-INT.png" alt="Wiper INT" class="diagram">
         </div>
       </div>
+    </div> -->
+
+     <div class="card">
+      <div class="card-header" id="step4Heading">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button"
+                  data-toggle="collapse" data-target="#step4"
+                  aria-expanded="false" aria-controls="step4">
+            <h4>Khi Wiper switch bật ở chế độ <strong>INT</strong></h4>
+          </button>
+        </h5>
+      </div>
+      <div id="step4" class="collapse" aria-labelledby="step4Heading" data-parent="#stepsAccordion">
+        <div class="card-body">
+          <ul style="padding-left:18px;">
+            <li><h5>Dòng điều khiển: 25A WIP => Chân B Windshield Wiper SW => Trở => Biến Trở => Tụ điện(Tích điện) Tụ điện(Phóng điện) => INT1, INT2 => Transistor => Chân EW => Mass. Transistor thông.25A WIP => Chân B Windshield Wiper SW => Cuộn trở => Transistor => Mass.Tiếp điểm đóng  </h5></li>
+            <li><h5>Dòng Chính: 25A WIP => Chân B Windshield Wiper SW => Cuộn trở => Transistor => Mass.Tiếp điểm đóng </h5></li>
+          </ul>
+          <img src="img/NLHD/intnlhd.png" alt="Wiper INT" class="diagram">
+        </div>
+      </div>
     </div>
+
+    <div class="card">
+      <div class="card-header" id="step5Heading">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" type="button"
+                  data-toggle="collapse" data-target="#step5"
+                  aria-expanded="false" aria-controls="step5">
+            <h4>Khi Wiper switch bật ở chế độ <strong>OFF</strong></h4>
+          </button>
+        </h5>
+      </div>
+      <div id="step5" class="collapse" aria-labelledby="step4Heading" data-parent="#stepsAccordion">
+        <div class="card-body">
+          <ul style="padding-left:18px;">
+            <li><h5>25A WIP => Chân B Windshield Wiper SW => Trở => Biến Trở => Tụ điện(Tích điện) Tụ điện(Phóng điện) => INT1,B1 => Trở  =>  Wiper Relay.</h5></li>
+            <li><h5>Do có sự chênh lệch điện áp ở vị trí Wiper Relay nên Transistor ở vị trí này không đủ điều kiện thông mạch nên Motor không hoạt động ở chế độ này  </h5></li>
+          </ul>
+          <img src="img/NLHD/offnlhd.png" alt="Wiper INT" class="diagram">
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div><!-- /accordion -->
 </section>
 <!-- KẾT THÚC NỘI DUNG CHÍNH -->
